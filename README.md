@@ -5,7 +5,7 @@
 
 Muestra la salida y explica los resultados en función de los métodos entregados
 
->![Optional Tex] (src/main/resources/1.png)
+>![Optional Tex](src/main/resources/1.png)
 
 >Observamos que tenemos dos clases: Cliente y Empleado. Al correr el código, el flujo del programa inicia en el método *main* de la clase Cliente, el cual primero imprime un mensaje en pantalla y, a continuación, instancia un objeto de la clase **Empleado (el constructor recibe como parámetros el nombre, apellido y años de experiencia del empleado). Después, se llama al método *showEmpDetail* de la clase Cliente. Dicho método recibe como parámetro al objeto previamente instanciado de la clase Empleado y, además, será el encargado de llamar al resto de métodos de esta clase. Primero llama al método *displayEmpDetail* (método encargado de imprimir en pantalla el nombre y años de experiencia del empleado) y luego, al imprimir en pantalla el ID y rango del empleado, hace un llamado a los métodos *checkSeniority* y *generateEmpId*, los cuales reciben como parámetros un número y una cadena de texto respectivamente (no necesariamente los atributos previamente definidos en el constructor de la clase Empleado). Luego, se imprime en pantalla un espacio en blanco y se procede a instanciar un nuevo objeto de la clase Empleado. Una vez más, se llama al método *showEmpDetail* y el proceso anteriormente descrito se repite.
 
@@ -25,19 +25,19 @@ generateEmpId(...) para generar la identificación del empleado. Para mejorar la
 
 >Clase Cliente:
 
->![Optional Tex] (src/main/resources/3_1.png)
+>![Optional Tex](src/main/resources/3_1.png)
 
 >Clase Empleado:
 
->![Optional Tex] (src/main/resources/3_2.png)
+>![Optional Tex](src/main/resources/3_2.png)
 
 >Clase GeneradorIDEmpleado:
 
->![Optional Tex] (src/main/resources/3_3.png)
+>![Optional Tex](src/main/resources/3_3.png)
 
 >Clase SeniorityChecker:
 
->![Optional Tex] (src/main/resources/3_4.png)
+>![Optional Tex](src/main/resources/3_4.png)
 
 >Dentro de la clase Empleado, se removieron los métodos generateEmpId y checkSeniority (con el fin de cumplir con el principio de responsabilidad única).
 
@@ -49,7 +49,7 @@ generateEmpId(...) para generar la identificación del empleado. Para mejorar la
 
 Realiza una demostración completa que sigue a SRP. Explica tus resultados
 
->![Optional Tex] (src/main/resources/4.png)
+>![Optional Tex](src/main/resources/4.png)
 
 >Como se puede observar, los resultados no han variado; pero lo que si ha cambiado es el diseño de este código, el cual ahora cumple con el principio de responsabilidad única. Cada una de las clases presentes solo tienen un único método, el cual a su vez solo cumplen una función y no más. 
 
@@ -87,7 +87,7 @@ class Estudiante {
 
 Muestra la salida y explica los resultados en función de los métodos entregados
 
->![Optional Tex] (src/main/resources/6.png)
+>![Optional Tex](src/main/resources/6.png)
 
 >El flujo de nuestro programa inicia en el método *main ()* de nuestra clase Cliente. Lo primero que hace es mostrar un mensaje en pantalla indicando que se realizará una demostración sin implementar el principio abierto/cerrado. Acto seguido, se declara una lista de objetos de tipo Estudiante, llamado *enrolledStudents*. Esta lista se obtiene al llamar el método estático *enrollStudents* (del tipo lista de estudiantes) de la clase Cliente. Dentro de este método se instancian objetos de la clase Estudiante, proporcionando los parámetros requeridos por el constructor de esta (nombre, número de registro, puntaje y departamento) y, posteriormente, se declara una lista de objetos “estudiante”, la cual será previamente llenada con los objetos que acabamos de instanciar, para finalmente ser retornada por el método actualmente descrito.
 
@@ -105,17 +105,17 @@ Muestra la salida y explica los resultados en función de los métodos entregado
 
 >A continuación, se muestran imágenes de las modificaciones en e archivo **Estudiante.java** y la creación de **CienciaEstudiante.java** y **ArteEstudiante.java**.
 
->![Optional Tex] (src/main/resources/7_1.png)
+>![Optional Tex](src/main/resources/7_1.png)
 
->![Optional Tex] (src/main/resources/7_2.png)
+>![Optional Tex](src/main/resources/7_2.png)
 
->![Optional Tex] (src/main/resources/7_3.png)
+>![Optional Tex](src/main/resources/7_3.png)
 
 - Pregunta 8
 
 Debes abordar el método de evaluación para la distinción de una mejor manera. Por lo tanto, crea la interfaz DistinctionDecider que contiene un método llamado EvaluationDistinction.
 
->![Optional Tex] (src/main/resources/8.png)
+>![Optional Tex](src/main/resources/8.png)
 
 >Se puede apreciar la interfaz DistintionDecider que ha sido creada. Se le añadió el método evaluateDistinction según las directrices de la pregunta. Dicho método será del tipo void y recibirá como parámetro un objeto de la clase Estudiante.
 
@@ -124,9 +124,9 @@ Debes abordar el método de evaluación para la distinción de una mejor manera.
 Completa el código de ArtsDistinctionDecider y ScienceDistinctionDecider que implementan esta interfaz y sobreescriben el método de evaluateDistinction(...) para
 especificar los criterios de evaluación según sus necesidades. De esta forma, los criterios de distinción específicos de flujo se envuelven en una unidad independiente.
 
->![Optional Tex] (src/main/resources/9_1.png)
+>![Optional Tex](src/main/resources/9_1.png)
 
->![Optional Tex] (src/main/resources/9_2.png)
+>![Optional Tex](src/main/resources/9_2.png)
 
 >Se presentan capturas las clases **ArtsDistinctionDecider.java** y **ScienceDistinctionDecider.java**. A cada una de ellas se les implementa un método *evaluateDistinction*, previamente declarado en la interfaz DistinctionDecider. Debido que evaluateDistinction acepta un objeto “Estudiante” como parámetro, también puede aceptar a sus objetos hijos como CienciaEstudiante y ArteEstudiante (polimorfismo).
 
@@ -223,11 +223,11 @@ class EFax implements Fax {
 ```
 >  Al ejecutar el programa, visualizamos que todo esta correcto a primera instancia, pero nos damos cuenta que la línea 13 esta comentada, es decir, que el usuario impresora básica no esta usando el *método sendfax()* , el cual tiene sentido, porque la impresora básica solo puede imprimir documentos, mas no enviar fax, pero esto no la hace ajena a cualquier cambio que se quiera realzar en el método, ya que si se realiza un cambio en el *método sendfax()* en *ImpresoraAvanzada* obliga a que la interfaz impresora a cambiar lo que a su vez obliga a *ImpresoraBasica* a realizar tambien el cambio, esto es un claro ejemplo de que no se esta cumpliendo el *principio de segregación de interfaz*, el cual consite en que un cliente no debe depender de un método que no utiliza.
 
-> ![Optional Tex] (src/main/resources/19_1.png)
+> ![Optional Tex](src/main/resources/19_1.png)
 
 > Entonces debido a que el usuario impresora básica no puede enviar fax y al querer hacer uso del *método sendfax()* observamos una excepción. Tal como se muestra en la siguiente imagen:
 
-> ![Optional Tex] (src/main/resources/19_2.png)
+> ![Optional Tex](src/main/resources/19_2.png)
 
 > Ahora yendo al contexto que nos da el problema, si queremos mostrar el tipo de fax que esta utilizando el usuario debemos agregar un parámetro al *método sendFax()*, esto causaría el mismo problema que habíamos dado al inicio, ya que al agregar el parámetro al *método senFax()* en *ImpresoraAvanzada* obliga a realizar dichos cambios tanto a la interfaz impresora como a *ImpresoraBasica*, a pesar que el usuario impresora básica no usa dicho método, es decir, que no se esta cumpliendo el ISP.
 
@@ -235,7 +235,7 @@ class EFax implements Fax {
 
 > Por último, mostramos la jerarquía de fax que se implementó.
 
-> ![Optional Tex] (src/main/resources/19_3.png)
+> ![Optional Tex](src/main/resources/19_3.png)
 
 
 - Pregunta 20
