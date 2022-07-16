@@ -1,4 +1,4 @@
-package SRP;
+package NoSolid.SRP;
 
 public class SeniorityChecker {
     public static String checkSeniority(double experienceInYears){
