@@ -473,7 +473,7 @@ Supongamos que necesitas admitir otra impresora que pueda imprimir, enviar faxes
 
 > La interfaz DispositivoFax tiene un método sendFax, el cual se encarga de enviar fax.
 
->![Optional Tex](src/main/resources/27_1png)
+>![Optional Tex](src/main/resources/27_1.png)
 
 > La interfaz Impresora tiene un método printDocument, el cual se encarga de imprimir documentos.
 
