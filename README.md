@@ -134,12 +134,26 @@ especificar los criterios de evaluación según sus necesidades. De esta forma, 
 
 Realiza una demostración completa que sigue a OCP. Explica tus resultados
 
-
+>La clase Estudiante crea objetos de la clase estudiante
+> ![Optional Tex](src/main/resources/10_1.png)
+> Las clases ArteEstudiante y CienciaEstudiante extienden de la clase abstracta Estudiante. Aquí se puede ver un posible uso de OCP, pues simplemente se crearía nuevas clases que extiendan de Estudiante
+>![Optional Tex](src/main/resources/10_2.png)
+>![Optional Tex](src/main/resources/10_3.png)
+>Se crea la interfaz DistinctionDecider con la firma del método evaluateDistinction que va a recibir como parámetro un objeto de la clase Estudiante
+>![Optional Tex](src/main/resources/10_4.png)
+>Las clases ScienceDistinctionDecider y ArtsDistinctionDecider implementan la interfaz DistinctionDecider y su método evaluateDistinction, usan este método para evaluar el departamento al cual corresponde el estudiante
+>![Optional Tex](src/main/resources/10_5.png)
+>![Optional Tex](src/main/resources/10_6.png)
+>En la clase Cliente que sigue el OCP se puede observar que se crean diferentes listas para los diferentes tipos de estudiante, esto hace que la lógica del programa sea más escalable y más entendible
+>![Optional Tex](src/main/resources/10_7.png)
+>![Optional Tex](src/main/resources/10_8.png)
+>Este sería el output siguiendo el principio de Open Close
+>![Optional Tex](src/main/resources/10_9.png)
 
 - Pregunta 11
 
 ¿Cuáles son las principales ventajas ahora?
-
+>Las principales ventajas se muestran, por ejemplo, cuando se desee añadir otro tipo de estudiante (Deportes), en ese caso se debería modificar la clase DistinctionDecider y su método evaluateDistinction lo que conllevaría a no cumplir con el principio de OPEN/CLOSE, puesto que debería estar cerrado a modificación. Por otro lado, si creamos otra clase llamada SportStudent solo deberíamos extenderla de la clase abstracta Student y no modificar la clase ya escrita, lo mismo aplicaría para las clases que implementan la interfaz DistinctionDecider.
 
 
 ## Principio de sustitución de Liskov ##
@@ -147,6 +161,13 @@ Realiza una demostración completa que sigue a OCP. Explica tus resultados
 - Pregunta 12
 
 Muestra la salida y explica los resultados en función de los métodos entregados
+
+>Cuando se corre tal y como fue entregado ocurre un error, pues la clase GuestUserPayment esta vacia
+>![Optional Tex](src/main/resources/12_1.png)
+> Sin embargo, si comentamos momentáneamente esa parte podemos observar:
+>![Optional Tex](src/main/resources/12_2.png)
+>La manera como está estructurado este ejemplo sin LSP es:
+Existe una Interfaz Payment con las firmas de los métodos previousPaymentInfo y newPayment; esta interfaz es implementada en las clases RegisteredUserPayment y GuestUserPayment que hacen referencia a un tipo de usuario dentro del banco ficticio y también está la clase PaymentHelper que crea una lista de Payment, donde se puede añadir objetos de las clases que implementan esta interfaz (RegisteredUserPayment y GuestUserPayment) y serviría como un cajero o registro de operaciones y por ultimo tenemos la clase Cliente donde se puede ver la demostración sin LSP donde se instancia un objeto de tipo PaymentHelper, se crean dos objetos de la clase RegisteredUserPayment, se añaden estos a helper (PaymentHelper) y se ejecutan los métodos de showPreviousPayments y processNewPayments (ambos de estos métodos iteran sobre los antiguos o actuales pagos de los objetos que usan la interfaz Payment)
 
 
 - Pregunta 13
@@ -170,34 +191,76 @@ class GuestUserPayment implements Payment {
     }
 }
 ```
+>Una vez completada la clase GuestUserPayment y descomentado la clase Cliente se puede observar que obtenemos una UnsupportedOperationException y esto debido a que el método previousPaymentInfo de la clase GuestUserPayment arroja esa este tipo de Exception
+>![Optional Tex](src/main/resources/13.png)
+
+
 
 - Pregunta 14
 
 Dentro del método main(), utilizas una instancia de usuario invitado e intentas usar su clase auxiliar de la misma manera,¿ qué tipo de excepción te encuentras?¿Cuál es la solución?
 
+>Tal como explique en la pregunta 13 nos encontramos con una Exception de tipo UnsupportedOperationException; la solución sería emular lo que hace la otra clase que implementa la interfaz Payment (RegisteredUserPayment) para el método previousPaymentInfo y sería cambiar el cuerpo:
+>![Optional Tex](src/main/resources/14_1.png)
+>Por un comentario que diga que no se puede mostrar los pagos anteriores pues es un usuario invitado
+>![Optional Tex](src/main/resources/14_2.png)
 
 
 - Pregunta 15
 
 Todo lo anterior Lo más importante es que viola el OCP cada vez que modifica una clase existente que usa esta cadena if-else. Entonces, busquemos una mejor solución.
 
+>Un caso que viola OCP es en la clase main 
+>![Optional Tex](src/main/resources/15_1.png)
+>Se podrían reemplazar RegisteredUserPayment y GuestUserPayment por la interfaz Payment, se realiza este cambio con la finalidad de que la interfaz Payment no se modifique y que solo se pueda extender para crear nuevas clases
+>![Optional Tex](src/main/resources/15_2.png)
+>![Optional Tex](src/main/resources/15_3.png)
 
 
 - Pregunta 16
 
 En el próximo programa, eliminaremos el método newPayment() de la interfaz de payment. Coloca este método en otra interfaz llamada NewPayment. Como resultado, ahora tienes dos interfaces con las operaciones específicas. Dado que todos los tipos de usuarios pueden generar una nueva solicitud de pago, las clases concretas de RegisteredUserPayment y GuestUserPayment implementan la interfaz NewPayment.
+```
+interface PreviousPayment {
+    void previousPaymentInfo();
+}
+interface NewPayment {
+    void newPayment();
+}
+
+```
+
+>Creamos las interfaces PreviousPayment y NewPayment
+>![Optional Tex](src/main/resources/16_1.png)
+>![Optional Tex](src/main/resources/16_2.png)
+> Completamos las clases RegisteredUserPayment y GuestUserPayment implementando las interfaces necesarias
+>![Optional Tex](src/main/resources/16_3.png)
+>![Optional Tex](src/main/resources/16_4.png)
+> A la hora de completar la clase PayementHelper hacemos hincapié en crear las listas y métodos del tipo deseado (Interfaces NewPayment y PreviousPayment) y así poder incluir y cumplir con el principio LSP
+>![Optional Tex](src/main/resources/16_5.png)
+> A la hora de completar la clase PayementHelper hacemos hincapié en crear las listas y métodos del tipo deseado (Interfaces NewPayment y PreviousPayment) y así poder incluir y cumplir con el principio LSP
+>![Optional Tex](src/main/resources/16_6.png)
+>![Optional Tex](src/main/resources/16_7.png)
+
+
 
 
 
 - Pregunta 17
 
 ¿Cuáles son los cambios clave?
+>Los cambios clave fueron separar los métodos previousPaymentInfo newPayment de la interfaz, esto porque la lógica indicaba que los objetos de la clase GuestUserPayment no debian usar el método previousPaymentInfo.
+>Al separar la interfaz Payment en dos interfaces nuevas (NewPayment y PreviousPayment) doy más independencia, escalabilidad y minimizo los posibles errores en el futuro 
 
 
 
 - Pregunta 18
 
 Ten que aquí el enfoque clave estaba en el principio LSP, nada más. Podrías refactorizar fácilmente el código del cliente usando algún método estático. Por ejemplo realiza una modificación donde utilizas un método estático para mostrar todas las solicitudes de pago y utilizar este método siempre que lo necesites.
+
+>La posible inclusión del método showEveryPayment que muestra los pagos ya registrados y los que serán registrados
+>![Optional Tex](src/main/resources/18_1.png)
+>![Optional Tex](src/main/resources/18_2.png)
 
 
 
