@@ -3,5 +3,5 @@ package NoSolid.ISP;
 interface Impresora {
     void printDocument();
 
-    void sendFax();
+    void sendFax( Fax faType);
 }
