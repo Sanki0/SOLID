@@ -1,6 +1,8 @@
 package Solid.OCP;
+
 import java.util.ArrayList;
 import java.util.List;
+
 public class Cliente {
     public static void main(String[] args) {
         System.out.println("Demostracion OCP");
@@ -32,17 +34,17 @@ public class Cliente {
     }
 
     private static List<Estudiante> enrollScienceStudents() {
-        Estudiante Irene = new CienciaEstudiante("Irene", "R1", 81.5,"Ciencia de la computacion.");
-        Estudiante jessica = new CienciaEstudiante("Jessica", "R2", 72,"Fisica");
+        Estudiante irene = new CienciaEstudiante("Irene", "R1", 81.5, "Ciencia de la Computacion.");
+        Estudiante jessica = new CienciaEstudiante("Jessica", "R2", 72, "Fisica");
         List<Estudiante> CienciasEstudiantes = new ArrayList<Estudiante>();
-        CienciasEstudiantes.add(Irene);
+        CienciasEstudiantes.add(irene);
         CienciasEstudiantes.add(jessica);
         return CienciasEstudiantes;
     }
 
     private static List<Estudiante> enrollArtsStudents() {
-        Estudiante chalo = new ArteEstudiante("Chalo", "R3", 71,"Historia");
-        Estudiante claudio = new ArteEstudiante("Claudio", "R4", 66.5,"Literatura");
+        Estudiante chalo = new ArteEstudiante("Chalo", "R3", 71, "Historia");
+        Estudiante claudio = new ArteEstudiante("Claudio", "R4", 66.5, "Literatura");
         List<Estudiante> ArtesEstudiantes = new ArrayList<Estudiante>();
         ArtesEstudiantes.add(chalo);
         ArtesEstudiantes.add(claudio);

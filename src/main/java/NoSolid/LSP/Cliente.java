@@ -6,14 +6,14 @@ public class Cliente {
         PaymentHelper helper = new PaymentHelper();
 
         // Instanciando dos usuarios registrados
-        RegisteredUserPayment pagoAbejita = new RegisteredUserPayment("Abejita");
-        RegisteredUserPayment pagoChalito = new RegisteredUserPayment("Chalito");
+        Payment pagoAbejita = new RegisteredUserPayment("Abejita");
+        Payment pagoChalito = new RegisteredUserPayment("Chalito");
 
         // Agregando los usuarios a los helper
         helper.addUser(pagoAbejita);
         helper.addUser(pagoChalito);
 
-        GuestUserPayment guestUser = new GuestUserPayment();
+        Payment guestUser = new GuestUserPayment();
         helper.addUser(guestUser);
 
         // Procesando el pago usando la clase helper
