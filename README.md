@@ -385,6 +385,17 @@ interface Impresora {
 
 Si comienzas tu codificación considerando las impresoras avanzadas que pueden imprimir y enviar un fax, está bien. Pero en una etapa posterior, si tu programa también necesita admitir impresoras básicas,¿ qué código puedes escribir?,
 
+> Podemos lanzar una excepción para indicar que la operación solicitada no es compatible, de esta manera el usuario sabrá que hay un error en tiempo de ejecución.
+
+> ![Optional Tex](src/main/resources/23_1.png)
+
+> Tambien podriamos enviar un mensaje informando que la impresora no puede enviar fax, pero esto seria una contradicción o mejor dicho algo absurdo, pues es como tener un botón en nuestra impresora y que no realice absolutamente nada.
+
+> ![Optional Tex](src/main/resources/23_2.png)
+
+> Con lo escrito anteriormente, podríamos inferir otro código, el de que no realice absolutamente nada, es decir un método vacío.
+
+> ![Optional Tex](src/main/resources/23_3.png)
 
 - Pregunta 24
 
@@ -398,6 +409,41 @@ impresora.printDocument();
         impresora.printDocument();
 //impresora .sendFax();
 ```
+Además, no puedes escribir algo como
+
+```
+List<Impresora> impresoras = new ArrayList<Impresora>();
+impresoras.add(new ImpresoraAvanzada());
+impresoras.add(new ImpresoraBasica());
+for (Impresora dispositivo : impresoras) { 
+    dispositivo.printDocument();
+    // dispositivo.sendFax();
+}
+```
+
+En ambos casos, verás excepciones de tiempo de ejecución.
+
+> Para el primer código : Coprobamos nuestras respuestas en los tres casos dados como respuesta (las imágenes) en la anterior pregunta.
+
+> Para el segundo código:
+
+> - En el primer caso : La excepción 
+
+> ![Optional Tex](src/main/resources/24_1.png)
+
+> Observamos que efectivamente en ambos códigos hay excepciones de tiempo de ejecución.
+
+> - En el segundo caso : El mensaje
+
+> ![Optional Tex](src/main/resources/24_2.png)
+
+> Observamos que efectivamente en ambos códigos nos lanza el mismo mensaje.
+
+> - En el primer caso : El método vacío 
+
+> ![Optional Tex](src/main/resources/24_3.png)
+
+> Observamos que efectivamente en ambos códigos no nos muestra nada.
 
 - Pregunta 25
 
@@ -409,16 +455,41 @@ for (Impresora dispositivo : impresoras) { .printDocument();
 }
 ```
 
+con una expresión lambda adecuada.
+
+> ![Optional Tex](src/main/resources/25.png)
+
 - Pregunta 26
 
 Muestra la salida y explica los resultados en función de los métodos entregados.
 
+> ![Optional Tex](src/main/resources/26.png)
+
+>  Visualizamos que para una impresora avanzada que llama al método **sendFax** y **printDocument** cumple su respectiva función sin ningún inconveniente. Pero que para una impresora básica que llama al método **sendFax** y **printDocument** solo cumple la función de imprimir documentos, pues como sabemos este tipo de impresora no puede enviar fax, por lo tanto, cuando se llama al método sendFax se lanza una excepción.
 
 - Pregunta 27
 
 Supongamos que necesitas admitir otra impresora que pueda imprimir, enviar faxes y fotocopiar. En este caso, si agregas un método de fotocopiado en la interfaz Impresora, los dos clientes existentes, ImpresoraBasica y ImpresoraAvanzada, deben adaptarse al cambio.
 
+> La interfaz DispositivoFax tiene un método sendFax, el cual se encarga de enviar fax.
 
+>![Optional Tex](src/main/resources/27_1png)
+
+> La interfaz Impresora tiene un método printDocument, el cual se encarga de imprimir documentos.
+
+> ![Optional Tex](src/main/resources/27_2.png)
+
+> La clase ImpresoraAvanzada implementa tanto la interfaz DispositivoFax como la interfaz Impresora, debido a que la impresora avanzada puede imprimir documentos como enviar fax.
+
+> ![Optional Tex](src/main/resources/27_3.png)
+
+> La clase ImpresoraBásica implementa solo la interfaz Impresora, debido a que la impresora báisca solo puede imprimir documentos mas no enviar fax.
+
+> ![Optional Tex](src/main/resources/27_4.png)
+
+> Por último la clase Cliente, el cual al ejecutar el programa visualizamos la salida, el cual confirma lo que hemos mencionado, la impresora básica imprime documento y la impresora avanzada imprime documento y envia fax.
+
+> ![Optional Tex](src/main/resources/26.png)
 
 - Pregunta 28
 
