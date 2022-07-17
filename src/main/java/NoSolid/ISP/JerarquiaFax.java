@@ -2,6 +2,7 @@ package NoSolid.ISP;
 interface Fax {
     void typeFax( );
 }
+
 class LanFax implements Fax {
     @Override
     public void typeFax( ){
@@ -14,7 +15,6 @@ class EFax implements Fax {
         System.out.println("El tipo de Fax es Efax "  );
     }
 }
-
 
 
 
