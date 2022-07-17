@@ -12,3 +12,6 @@ public class ImpresoraAvanzada implements Impresora, DispositivoFax {
 
     }
 }
+
+
+

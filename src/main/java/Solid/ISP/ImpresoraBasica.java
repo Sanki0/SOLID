@@ -6,3 +6,5 @@ public class ImpresoraBasica implements Impresora{
         System.out.println("La impresora basica imprime un documento.");
     }
 }
+
+
