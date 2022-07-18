@@ -510,7 +510,7 @@ Supongamos que necesitas admitir otra impresora que pueda imprimir, enviar faxes
 
 > ![Optional Tex](src/main/resources/30.png)
 > 
-> Cuando se ejecuta un método definido de una clase, no detiene el programa simplemente lo sigue ejecutando normalmente
+> Si se usa un metodo vacío estamos entramos en conflicto con el mismo principio que dice: "UNA CLASE NO DEBE SER FORZADA A IMPLEMENTAR UNA INTERFAZ QUE NO USA, NI DEBE SER FORZADA A DEPENDER DE METODOS QUE NO USAN" y si usamos el método vacío, en lugar de lanzar la excepción, podriamos hacer que el codigo caiga en smelly code pues el metodo vacio no ayudaria a una posible mejora del codigo
 ## Principio de inversión de dependencia ##
 
 - Pregunta 31
