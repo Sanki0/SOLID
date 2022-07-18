@@ -569,12 +569,12 @@ Completa todos los archivos siguientes de la sección SOLID
 
 Encuentra alguna excepción a esta sugerencia.
 
->El Principio de inversión de dependencia soy muy útiles y necesarios cuando se trabajan con proyectos grandes, complejos, y flexibles. Pero en el caso de proyectos de menor escala no es necesario hacer todo 100% flexible, ya que el tiempo que se invierte aplicando la abstracción se podría usar para el desarrollo de otras clases, además de que ni siquiera llegara a ser beneficioso. Claro esta que significa que deba aplicarse esta regla todo el tiempo, pero esa depende de cada desarrollador.
+>El Principio de inversión de dependencia es muy útil y necesario cuando se trabajan con proyectos grandes, complejos, y flexibles. Pero en el caso de proyectos de menor escala no es necesario que sea 100% flexible, ya que el tiempo que se invierte aplicando la abstracción se podría usar para el desarrollo de otras clases, además de que ni siquiera llegara a ser beneficioso.
 
 - Pregunta 36
 
 El constructor de la clase InterfazUsuario acepta un parámetro de base de datos. Proporciona una instalación adicional a un usuario cuando utiliza tanto el constructor como el método setter (setDatabase) dentro de esta clase. ¿Cuál es el beneficio?.
 
->Cuando se realiza la creación de otro constructor de Interfaz usuario esta clase puede ser simplificada( al menos en mi caso especifico) ya que yo tenia 2 métodos los cuales añadían el id de empleado a la base de datos cada uno. Pero una vez creado el constructor y el método de cambiar base de datos, se puede eliminar estos métodos y crear un método general al cual se llamara saveEmployee
+>Cuando se realiza la creación de otro constructor de Interfaz usuario esta clase puede ser simplificada( al menos en este caso especifico) ya que se tiene 2 métodos los cuales añaden el id de empleado a la base de datos cada uno. Pero una vez creado el constructor y el método de cambiar base de datos, se puede eliminar estos métodos y crear un método general al cual se llamara saveEmployee
 
 > ![Optional Tex](src/main/resources/36.png)
