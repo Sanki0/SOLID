@@ -494,49 +494,87 @@ Supongamos que necesitas admitir otra impresora que pueda imprimir, enviar faxes
 - Pregunta 28
 
 ¿Qué sucede si usa un método predeterminado dentro de la interfaz?
+>Si se quiere usar un método de una interfaz, hay varias cosas que se tiene que tener en cuenta. La primera que las interfaces son abstractas y al serlos. Sus métodos no están definidos. Es por este motivo que no se puede crear un objeto del tipo interfaz.
 
-
+> ![Optional Tex](src/main/resources/28.png)
 - Pregunta 29
 
 ¿Qué sucede si proporcionas un método de fax predeterminado en una interfaz?. Viste el problema potencial con esto!
+>Cuando se quiere definir un método en la interfaz el programa no te lo permite debido a que estas en un interfaz y si es que por algún error al momento de compilar el programa te permite hacerlo se crearía mas problemas ya que cuando se extienden las interfaces, estos métodos son definidos otra vez.
 
+> ![Optional Tex](src/main/resources/29.png)
 
 - Pregunta 30
 
 ¿Qué sucede si usa un método vacío, en lugar de lanzar la excepción?
 
-
+> ![Optional Tex](src/main/resources/30.png)
+> 
+> Cuando se ejecuta un método definido de una clase, no detiene el programa simplemente lo sigue ejecutando normalmente
 ## Principio de inversión de dependencia ##
 
 - Pregunta 31
 
 Muestra la salida y explica los resultados en función de los métodos entregados
 
+> ![Optional Tex](src/main/resources/31_1.png)
 
+>En la foto se puede observar que se tiene 3 clases: Cliente, InterfazUsuario, Oracle Database. Cuando la clase Cliente(la cual contiene el método main) es ejecutada, lo primero que hace es imprimir un mensaje en la pantalla, luego instancia un objeto de la clase InterfazUsuario.
+
+> ![Optional Tex](src/main/resources/31_2.png)
+
+> Una vez inicializado este objeto se decide llamar a un método este mismo. Este método es saveEmployeeId, este método recibe como parámetro un string que representa el numero de ID de cada empleado. Si pasamos a inspeccionar la clase InterfazUsuario, se observa que el parámetro, es usado otra vez por un método de un objeto de la clase OracleDatabase.
+
+> ![Optional Tex](src/main/resources/31_3.png)
+
+>  En esta ultima clase se ve que método llamado imprime un mensaje simulando el ingreso del ID del trabajador en la base de datos.
 - Pregunta 32
 
 El programa es simple, pero ¿qué tipo de problemas presenta?
 
+>Este programa tiene un gran problema y es que no respeta el Principio de inversión de dependencia de la metodología SOLID. Se tiene a la clase InterfazUsuario la cual instancia a un objeto de la clase OracleDatabase, esto es un incumplimiento de la siguiente regla:
+•	Los módulos de alto nivel no deberían depender de los módulos de bajo nivel. Ambos deberían depender de abstracciones
+La clase InterfazUsuario depende de OracleDatabase.
+
+> ![Optional Tex](src/main/resources/32.png)
 
 - Pregunta 33
 
+
 En el programa de la carpeta SOLID, para el caso DIP verás la siguiente jerarquía:
 
+> ![Optional Tex](src/main/resources/33.png)
+
+>En el caso de la implementación de la clase InterfazUsuario se tuvo que hacer dos veces, esto posiblemente sea mi caso único. En la primera implementación se opto por crear dos métodos, cada uno encargándose de enviar el Id a la base de datos. Pero luego de ver las sugerencias en las siguientes preguntas se decidio crear métodos que asignaran las bases de datos y un método general al cual envia el código de empleado una vez ya definida la base de datos.
 BaseDatos.java
 
-OracleDatabase.java
+
 
 
 - Pregunta 34
 
 Completa todos los archivos siguientes de la sección SOLID
 
+> ![Optional Tex](src/main/resources/34.png)
+
+> ![Optional Tex](src/main/resources/34_2.png)
+
+> ![Optional Tex](src/main/resources/34_3.png)
+
+> ![Optional Tex](src/main/resources/34_4.png)
+
+> ![Optional Tex](src/main/resources/34_5.png)
+
 - Pregunta 35
 
 Encuentra alguna excepción a esta sugerencia.
 
+>El Principio de inversión de dependencia soy muy útiles y necesarios cuando se trabajan con proyectos grandes, complejos, y flexibles. Pero en el caso de proyectos de menor escala no es necesario hacer todo 100% flexible, ya que el tiempo que se invierte aplicando la abstracción se podría usar para el desarrollo de otras clases, además de que ni siquiera llegara a ser beneficioso. Claro esta que significa que deba aplicarse esta regla todo el tiempo, pero esa depende de cada desarrollador.
 
 - Pregunta 36
 
 El constructor de la clase InterfazUsuario acepta un parámetro de base de datos. Proporciona una instalación adicional a un usuario cuando utiliza tanto el constructor como el método setter (setDatabase) dentro de esta clase. ¿Cuál es el beneficio?.
 
+>Cuando se realiza la creación de otro constructor de Interfaz usuario esta clase puede ser simplificada( al menos en mi caso especifico) ya que yo tenia 2 métodos los cuales añadían el id de empleado a la base de datos cada uno. Pero una vez creado el constructor y el método de cambiar base de datos, se puede eliminar estos métodos y crear un método general al cual se llamara saveEmployee
+
+> ![Optional Tex](src/main/resources/36.png)
